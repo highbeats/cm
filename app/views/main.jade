@@ -1,6 +1,6 @@
 .container.container-fluid
   .col-lg-12
-    h1 Color mixer 2ch
+    h1 Color mixer
     .panel.panel-default(ng-style="{background: 'rgb(' + colors[0].r + colors[1].r + ',' + colors[0].g + colors[1].g + ',' + colors[0].b + colors[1].b +')'}") &nbsp;
 
   .col-lg-6(ng-repeat='color in colors')
@@ -10,19 +10,24 @@
 
       .panel-body(ng-style="{background: 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')'}")
 
-        label R:
+        label Red:
         input(class='form-control', type='num', ng-model='color.r')
-        label G:
+
+        label Green:
         input(class='form-control', type='num', ng-model='color.g')
-        label B:
+
+        label Blue:
         input(class='form-control', type='num', ng-model='color.b')
 
         button(ng-click='saveColor(color)') Save
 
-
       .panel-footer
         table.table
+          th
+            tr History
           tr(ng-repeat='ver in color.hist')
             td {{ ver.r }}
             td {{ ver.g }}
             td {{ ver.b }}
+            td
+              a(ng-click='restoreColor(color, ver)') Restore
