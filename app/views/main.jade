@@ -1,0 +1,28 @@
+.container.container-fluid
+  .col-lg-12
+    h1 Color mixer 2ch
+    .panel.panel-default(ng-style="{background: 'rgb(' + colors[0].r + colors[1].r + ',' + colors[0].g + colors[1].g + ',' + colors[0].b + colors[1].b +')'}") &nbsp;
+
+  .col-lg-6(ng-repeat='color in colors')
+    .panel.panel-default
+      .panel-heading
+        .panel-title Color {{ colors.indexOf(color) }}
+
+      .panel-body(ng-style="{background: 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')'}")
+
+        label R:
+        input(class='form-control', type='num', ng-model='color.r')
+        label G:
+        input(class='form-control', type='num', ng-model='color.g')
+        label B:
+        input(class='form-control', type='num', ng-model='color.b')
+
+        button(ng-click='saveColor(color)') Save
+
+
+      .panel-footer
+        table.table
+          tr(ng-repeat='ver in color.hist')
+            td {{ ver.r }}
+            td {{ ver.g }}
+            td {{ ver.b }}
