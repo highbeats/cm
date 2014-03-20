@@ -1,8 +1,18 @@
 'use strict';
 
-angular.module('cmApp', [])
+angular.module('cmApp', ['ui.bootstrap'])
+  .value('Locals', {
+      en: {
+        title: 'Address Book',
+        contact: { name: 'Name', phone: 'Phone', address: 'Address', emails: 'Emails' }
+      },
+      ru: {
+        title: 'Адресная Книга',
+        contact: { name: 'ФИО', phone: 'Телефон', address: 'Место жительства', emails: 'Электронная почта' }
+      }
+  })
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl'})
-      .otherwise({ redirectTo: '/' });
+      .when('/contacts', {templateUrl: 'views/contacts.html', controller: 'AddressBookCtrl'})
+      .otherwise({ redirectTo: '/contacts' });
   });

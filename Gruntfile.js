@@ -167,7 +167,8 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          '.tmp/views/main.html': [ '<%= yeoman.app %>/views/main.jade' ]
+          '.tmp/views/main.html': [ '<%= yeoman.app %>/views/main.jade' ],
+          '.tmp/views/contacts.html': [ '<%= yeoman.app %>/views/contacts.jade' ]
         }
       }
     },
