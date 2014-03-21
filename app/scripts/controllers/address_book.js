@@ -1,17 +1,9 @@
 'use strict';
 
 angular.module('cmApp')
-  .controller('AddressBookCtrl', function ($modal, Contact, Locals, $scope) {
+  .controller('AddressBookCtrl', function ($modal, Contact, $scope) {
 
     $scope.contacts = Contact.query();
-
-    $scope.lang = 'en';
-
-    $scope.switchLang = function () {
-      ($scope.lang == 'en') ? $scope.lang = 'ru' : $scope.lang = 'en'
-    }
-
-    $scope.t = Locals;
 
     $scope.show = function (contact) {
       $scope.open(contact);
@@ -39,4 +31,3 @@ angular.module('cmApp')
       angular.extend($scope, {close: modal.close});
     }
   });
-
