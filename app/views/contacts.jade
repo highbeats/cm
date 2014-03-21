@@ -1,6 +1,6 @@
 .header.navbar.navbar-static-top
   .container
-    ul.nav.navbar-nav.navbar-right
+    ul.nav.navbar-nav.navbar-right#lang_selecta
       li(ng-class='{active: lang == "en"}')
         a(href='#' ng-click='switchLang()') En
       li(ng-class='{active: lang == "ru"}')
@@ -8,7 +8,7 @@
 
 .container.container-fluid
   .page-header
-    h1 {{ t[lang].title }}
+    h1(translate='') Address Book
   .row
     .panel
       button.btn.btn-default(ng-click='add()' id='add_new_contact') Add
@@ -36,5 +36,3 @@ script(type='text/ng-template' id='contact_modal_popup.html')
 
   .modal-footer
     button.btn-primary(type='button' ng-click='close(task)') Ok
-
-

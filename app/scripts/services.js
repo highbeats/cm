@@ -3,7 +3,9 @@
 angular.module('cmApp').factory('Contact', function () {
 
   var Contact = function (opts) {
-    if (!opts) opts = {};
+    if (!opts) {
+      opts = {};
+    }
     return _.extend({name: '', address: '', phone: '', email: ''}, opts);
   };
 

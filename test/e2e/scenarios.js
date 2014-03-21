@@ -13,9 +13,9 @@ describe('cmApp', function () {
     expect(element('.modal').attr('style')).toEqual('display: block;')
   });
 
-
   it('should switch langs', function () {
-    element('li')
-  })
-
+    expect(element('.page-header h1').text()).toBe('Address Book');
+    element('ul#lang_selecta li a(:contains("Ru"))').click();
+    expect(element('.page-header h1').text()).toBe('Адресная Книга');
+  });
 });

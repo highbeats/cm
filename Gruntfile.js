@@ -54,6 +54,20 @@ module.exports = function (grunt) {
         ]
       }
     },
+    nggettext_extract: {
+      pot: {
+        files: {
+          'po/template.pot': ['<%= yeoman.app %>/views/*.html']
+        }
+      }
+    },
+    nggettext_compile: {
+      all: {
+        files: {
+          '<%= yeoman.app %>/scripts/translations.js': ['po/*.po']
+        }
+      }
+    },
     connect: {
       options: {
         port: 9000,
@@ -294,7 +308,6 @@ module.exports = function (grunt) {
       dist: [
         'coffee',
         'compass:dist',
-        'imagemin',
         'svgmin',
         'htmlmin'
       ]
@@ -367,8 +380,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'jshint',
-    'test',
-    'build'
+    'build',
+    'nggettext_extract',
+    'nggettext_compile'
   ]);
 };

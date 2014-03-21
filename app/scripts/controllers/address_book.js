@@ -34,7 +34,7 @@ angular.module('cmApp')
         }
       });
 
-      //modal.result.then(ifOk, ifNotOk);
+      modal.result.then($log.info, $log.error);
 
       angular.extend($scope, {close: modal.close});
     }

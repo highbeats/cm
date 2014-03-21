@@ -3,7 +3,8 @@
 describe('Controller: AddressBookCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('cmApp'));
+  beforeEach(module('ui.bootstrap'));
+  beforeEach(module('cmApp', ['ui.bootstrap']));
 
   var Ctrl
     , scope;
