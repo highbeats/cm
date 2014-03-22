@@ -43,7 +43,7 @@ script(type='text/ng-template' id='contact_modal_popup.html')
       .form-group(ng-class="{'has-error': !contact.name.length}")
         label(for='input_contact_name' translate='') Name
         input.form-control(id='input_contact_name' ng-model='contact.name' type='text')
-      .form-group(ng-class="{'has-warning': !contact.name.phone.length}")
+      .form-group(ng-class="{'has-error': !contact.name.phone.length}")
         label(for='input_contact_phone' translate='') Phone
         input.form-control(id='input_contact_phone' type='phone' ng-model='contact.phone')
       .form-group
