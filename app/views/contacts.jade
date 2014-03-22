@@ -10,13 +10,29 @@
   .page-header
     h1(translate='') Address Book
   .row
-    .panel
-      button.btn.btn-default(ng-click='add()' id='add_new_contact') Add
-  .row
-    ul.list-group(ng-show='!!contacts.length')
-      li.list-group-item(ng-repeat='contact in contacts')
-        {name: {{ contact.name }}, address: {{ contact.address }}, email: {{ contact.email }} }
-        a(href='#' ng-click='show(contact)' class='show-edit-contact') Edit
+    .list-group
+      .list-group-item(href='#')
+        h4.list-group-item-head Your contacts:
+        p.list-group-item-text
+          p
+            button.btn.btn-default(type='button' ng-click='add()' id='add_new_contact' data-toggle='tooltip' title='Add' data-placement='top')
+              span.glyphicon.glyphicon-plus
+      .list-group-item(href='#' ng-repeat='contact in contacts')
+        h4.list-group-item-head {{ contact.name }}
+        p.list-group-item-text
+          address
+            {{ contact.address }}
+            br
+            abbr(title='Phone') Phone:
+            {{ contact.phone }}
+          address
+            a(href='mailto:#') {{ contact.email }}
+          p
+            .btn-group
+              button.btn.btn-default(type='button' href='#' ng-click='show(contact)' data-toggle='tooltip' title='Edit' data-placement='top')
+                span.glyphicon.glyphicon-pencil
+              button.btn.btn-default(type='button' href='#' ng-click='forget(contact)' data-toggle='tooltip' title='Forget' data-placement='top')
+                span.glyphicon.glyphicon-minus
 
 script(type='text/ng-template' id='contact_modal_popup.html')
   .modal-header
@@ -25,14 +41,18 @@ script(type='text/ng-template' id='contact_modal_popup.html')
   .modal-body
     form(role='form')
       .form-group(ng-class="{'has-error': !contact.name.length}")
-        label(for='input_contact_name') {{ t[lang]['contact']['name'] }}
-        input.form-control(id='input_contact_name' ng-model='contact.name' placeholder='anonymous record')
+        label(for='input_contact_name' translate='') Name
+        input.form-control(id='input_contact_name' ng-model='contact.name' type='text')
       .form-group(ng-class="{'has-warning': !contact.name.phone.length}")
-        label(for='input_contact_phone') {{ t[lang].contact.phone }}
-        input.form-control(id='input_contact_phone' ng-model='contact.phone' placeholder='whatsapp only')
+        label(for='input_contact_phone' translate='') Phone
+        input.form-control(id='input_contact_phone' type='phone' ng-model='contact.phone')
       .form-group
-        label {{ t[lang].contact.email }}
-        input.form-control(type='email' placeholder='woot! enter email!' ng-model='contact.email')
+        label(for='input_contact_email' translate='') Email
+        input.form-control(id='input_contact_email' type='email' ng-model='contact.email')
+      .form-group
+        label(for='input_contact_address' translate='') Address
+        input.form-control(id='input_contact_address' type='text' ng-model='contact.address')
 
   .modal-footer
-    button.btn-primary(type='button' ng-click='close(task)') Ok
+    button.btn.btn-primary(type='button' ng-click='$close()')
+      span.glyphicon.glyphicon-ok

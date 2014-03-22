@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cmApp')
-  .controller('AddressBookCtrl', function ($modal, Contact, $scope) {
+  .controller('AddressBookCtrl', function ($modal, Contact, $scope, $log) {
 
     $scope.contacts = Contact.query();
 
@@ -12,6 +12,10 @@ angular.module('cmApp')
     $scope.add = function () {
       $scope.contacts.push(new Contact());
       $scope.open(_.last($scope.contacts));
+    }
+
+    $scope.forget = function (contact) {
+      $scope.contacts.splice($scope.contacts.indexOf(contact), 1);
     }
 
     $scope.open = function (contact) {
@@ -26,7 +30,10 @@ angular.module('cmApp')
         }
       });
 
-      modal.result.then($log.info, $log.error);
+      modal.opened.then($log.info, $log.err);
+      modal.result.then(function () {
+        $scope.contact = null;
+      }, $log.error);
 
       angular.extend($scope, {close: modal.close});
     }
