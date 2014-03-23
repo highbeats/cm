@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Address"
+msgstr "Адрес"
+
+#: .tmp/views/contacts.html
+msgid "Address Book"
+msgstr "Адресная Книга"
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Email"
+msgstr "Эл. почта"
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Name"
+msgstr "Имя"
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Phone"
+msgstr "Телефон"
+
+#: .tmp/views/contacts.html
+msgid "Your contacts:"
+msgstr "Твои контакты:"

@@ -1,0 +1,24 @@
+.modal-header
+  h4
+    {{ contact.name }}
+.modal-body
+  form(role='form')
+    .form-group(ng-class="{'has-error': !contact.name.length}")
+      label(for='input_contact_name' translate='') Name
+      input.form-control(id='input_contact_name' ng-model='contact.name' type='text')
+    .form-group(ng-class="{'has-error': !contact.name.phone.length}")
+      label(for='input_contact_phone' translate='') Phone
+      input.form-control(id='input_contact_phone' type='phone' ng-model='contact.phone')
+    .form-group
+      label(for='input_contact_email' translate='') Email
+      input.form-control(id='input_contact_email' type='email' ng-model='contact.email')
+    .form-group
+      label(for='input_contact_address' translate='') Address
+      input.form-control(id='input_contact_address' type='text' ng-model='contact.address')
+
+.modal-footer
+  button.btn.btn-primary(type='button' ng-click='$close()')
+    span.glyphicon.glyphicon-ok
+  button.btn.btn-default(type='button' ng-click='$dismiss()')
+    span.glyphicon.glyphicon-remove
+

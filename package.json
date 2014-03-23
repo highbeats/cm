@@ -2,7 +2,8 @@
   "name": "cm",
   "version": "0.0.0",
   "dependencies": {
-    "jade": "*"
+    "jade": "*",
+    "es5-shim": "~2.3.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -27,7 +28,8 @@
     "matchdep": "~0.1.2",
     "connect-livereload": "~0.2.0",
     "grunt-google-cdn": "~0.2.0",
-    "grunt-ngmin": "~0.0.2"
+    "grunt-ngmin": "~0.0.2",
+    "grunt-angular-gettext": "*"
   },
   "engines": {
     "node": ">=0.8.0"

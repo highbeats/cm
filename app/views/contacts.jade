@@ -1,10 +1,10 @@
 .header.navbar.navbar-static-top
   .container
     ul.nav.navbar-nav.navbar-right#lang_selecta
-      li(ng-class='{active: lang == "en"}')
-        a(href='#' ng-click='switchLang()') En
-      li(ng-class='{active: lang == "ru"}')
-        a(href='#' ng-click='switchLang()') Ru
+      li
+        a(href='#' ng-click='changeLanguage("en")') En
+      li
+        a(href='#' ng-click='changeLanguage("ru")') Ru
 
 .container.container-fluid
   .page-header
@@ -12,7 +12,7 @@
   .row
     .list-group
       .list-group-item(href='#')
-        h4.list-group-item-head Your contacts:
+        h4.list-group-item-head(translate='') Your contacts:
         p.list-group-item-text
           p
             button.btn.btn-default(type='button' ng-click='add()' id='add_new_contact' data-toggle='tooltip' title='Add' data-placement='top')
@@ -33,26 +33,3 @@
                 span.glyphicon.glyphicon-pencil
               button.btn.btn-default(type='button' href='#' ng-click='forget(contact)' data-toggle='tooltip' title='Forget' data-placement='top')
                 span.glyphicon.glyphicon-minus
-
-script(type='text/ng-template' id='contact_modal_popup.html')
-  .modal-header
-    h4
-      {{ contact.name }}
-  .modal-body
-    form(role='form')
-      .form-group(ng-class="{'has-error': !contact.name.length}")
-        label(for='input_contact_name' translate='') Name
-        input.form-control(id='input_contact_name' ng-model='contact.name' type='text')
-      .form-group(ng-class="{'has-error': !contact.name.phone.length}")
-        label(for='input_contact_phone' translate='') Phone
-        input.form-control(id='input_contact_phone' type='phone' ng-model='contact.phone')
-      .form-group
-        label(for='input_contact_email' translate='') Email
-        input.form-control(id='input_contact_email' type='email' ng-model='contact.email')
-      .form-group
-        label(for='input_contact_address' translate='') Address
-        input.form-control(id='input_contact_address' type='text' ng-model='contact.address')
-
-  .modal-footer
-    button.btn.btn-primary(type='button' ng-click='$close()')
-      span.glyphicon.glyphicon-ok

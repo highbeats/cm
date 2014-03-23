@@ -3,14 +3,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: app/views/contacts.html
-msgid "Add"
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Address"
 msgstr ""
 
-#: app/views/contacts.html
+#: .tmp/views/contacts.html
 msgid "Address Book"
 msgstr ""
 
-#: app/views/contacts.html
-msgid "Edit"
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Email"
+msgstr ""
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Name"
+msgstr ""
+
+#: .tmp/views/partials/modal_contact_form.html
+msgid "Phone"
+msgstr ""
+
+#: .tmp/views/contacts.html
+msgid "Your contacts:"
 msgstr ""

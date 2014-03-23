@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     yeoman: yeomanConfig,
     watch: {
       jade: {
-        files: ['{.tmp,<%= yeoman.app %>}/views/*.jade'],
+        files: ['{.tmp,<%= yeoman.app %>}/views/*.jade', '{.tmp,<%= yeoman.app %>}/views/partials/*.jade'],
         tasks: ['jade:compile']
       },
       coffee: {
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
     nggettext_extract: {
       pot: {
         files: {
-          'po/template.pot': ['<%= yeoman.app %>/views/*.html']
+          'po/template.pot': ['.tmp/views/**/*.html']
         }
       }
     },
@@ -187,7 +187,8 @@ module.exports = function (grunt) {
         },
         files: {
           '.tmp/views/main.html': [ '<%= yeoman.app %>/views/main.jade' ],
-          '.tmp/views/contacts.html': [ '<%= yeoman.app %>/views/contacts.jade' ]
+          '.tmp/views/contacts.html': [ '<%= yeoman.app %>/views/contacts.jade' ],
+          '.tmp/views/partials/modal_contact_form.html': [ '<%= yeoman.app %>/views/partials/modal_contact_form.jade' ]
         }
       }
     },

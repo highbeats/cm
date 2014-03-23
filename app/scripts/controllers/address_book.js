@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cmApp')
-  .controller('AddressBookCtrl', function ($modal, Contact, $scope, $log) {
+  .controller('AddressBookCtrl', function ($modal, Contact, $scope, $log, gettextCatalog) {
 
     $scope.contacts = Contact.query();
 
@@ -21,7 +21,7 @@ angular.module('cmApp')
     $scope.open = function (contact) {
       $scope.contact = $scope.contacts[$scope.contacts.indexOf(contact)];
       var modal = $modal.open({
-        templateUrl: 'contact_modal_popup.html',
+        templateUrl: 'views/partials/modal_contact_form.html',
         scope: $scope,
         resolve: {
           contact: function () {
@@ -33,8 +33,13 @@ angular.module('cmApp')
       modal.opened.then($log.info, $log.err);
       modal.result.then(function () {
         $scope.contact = null;
-      }, $log.error);
+      }, function () {
+        $scope.forget($scope.contact);
+        $scope.contact = null;
+      });
+    }
 
-      angular.extend($scope, {close: modal.close});
+    $scope.changeLanguage = function (ln) {
+      gettextCatalog.currentLanguage = ln;
     }
   });

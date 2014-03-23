@@ -3,17 +3,15 @@
 describe('Controller: AddressBookCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('ui.bootstrap'));
-  beforeEach(module('cmApp', ['ui.bootstrap']));
+  beforeEach(module('cmApp', ['ngRoute', 'ui.bootstrap', 'gettext']));
 
-  var Ctrl
-    , scope;
+  var Ctrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $modal, $log) {
     scope = $rootScope.$new();
     Ctrl = $controller('AddressBookCtrl', {
-      $scope: scope, Contact: Contact
+      $scope: scope, Contact: Contact, $modal: $modal, $log: $log
     });
   }));
 
@@ -21,8 +19,9 @@ describe('Controller: AddressBookCtrl', function () {
     expect(scope.contacts.length).toBeTruthy();
   });
 
-  it('should attach localization variables', function () {
-    expect(scope.lang).toBe('en');
-    expect(_.isObject(scope.t)).toBeTruthy();
+  it('should add new contact to the list', function () {
+    var initialCollectionLength = scope.contacts.length;
+    scope.add();
+    expect(scope.contacts.length).toBe(initialCollectionLength + 1);
   });
 });
